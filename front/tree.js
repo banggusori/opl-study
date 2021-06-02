@@ -131,14 +131,16 @@ function fancyTree(){
             source:_dataTree,
             beforeExpand:function(event,data){
                 var expand = data.node.isExpanded();
-                var cookie = JSON.parse(_cookie.getCookie(_cookieKey));
+                var cookie = _cookie.getCookie(_cookieKey);
+                cookie = cookie.split(',');
                 var code =data.node.data[_options.group.code];
+                console.log(code);
                 if(!expand){
                     cookie.push(code);
                     _cookie.setCookie(_cookieKey,cookie);
                 }else{
                     if(cookie.length>0){
-                        var index = cookie.indexOf(code);
+                        var index = cookie.indexOf(code.toString());
                         if(index !== -1){
                             cookie.splice(index,1);
                             _cookie.setCookie(_cookieKey,cookie);

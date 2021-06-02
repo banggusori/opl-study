@@ -6,9 +6,8 @@ function _cookies(){
 
             var date = new Date();
             date.setTime(date.getTime()+(365*24*60*60*1000));
-            var d = typeof value == 'string' ? value : JSON.stringify(value);
+            var d = typeof value == 'string' ? value : value.toString();
             var str = keys+"="+d+"; expires="+date.toGMTString()+";path=/";
-            console.log(str);
             document.cookie = str;
         },
         getCookiesAll:function(){
@@ -20,7 +19,6 @@ function _cookies(){
         },
         getCookie:function(keys){
             let cookies = document.cookie.match('(^|;) ?' + keys + '=([^;]*)(;|$)');
-            console.log(cookies);
             cookies = cookies== null && cookies == undefined ? [] : cookies[2];
             return cookies;
             //cookies(keys);
