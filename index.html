@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <link href="//cdn.jsdelivr.net/npm/jquery.fancytree@2.27/dist/skin-win8/ui.fancytree.min.css" rel="stylesheet">
+    <script src="../lib/jquery.js"></script>
+    <script src="../lib/fancytree/jquery.fancytree.ui-deps.js"></script>
+    <script src="../lib/fancytree/jquery.fancytree.js"></script>
+    <script src="../lib/fancytree/jquery.fancytree.dnd5.js"></script>
+    <script src="../lib/fancytree/jquery.fancytree.multi.js"></script>
+    <script src="../lib/fancytree/jquery.fancytree.edit.js"></script>
+    <script src="/front/cookies.js"></script>
+    <script src="/front/tree.js"></script>
+    <script src="/front/module.js"></script>
+    <style type="text/css">
+        .fancytree-drag-source {
+            font-style: oblique;
+        }
+    </style>
+    <script>
+
+        var ftree = new fancyTree();
+        window.onload= function(){            
+            var options = {group:{code:"code",upCode:"up_code"}}
+            readTextFile("/demo/ajax-tree-products.json").then((e)=>{
+                ftree.init('#tree',["dnd5","edit","multi"],e,options);
+                ftree.drop((o,node,sourceNodes)=>{
+                });
+                //ftree.newItem();
+                }
+            );
+            document.querySelector('#addBtn').addEventListener('click',
+            function(evt){
+                ftree.newItem();
+            })
+
+            document.querySelector('#copyMode').addEventListener('click',
+            function(evt){
+                //ftree.newItem();
+                var mode = ftree.copyModeToggle();
+                if(!mode){
+                    evt.target.innerText="복사모드"
+                }else{
+                    evt.target.innerText="이동모드"
+                }
+            })
+
+        }
+        
+
+    </script>
+    
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <button id='addBtn'>그룹 추가</button>
+    <button id='copyMode'>복사 모드</button>
+    <title>Document</title>
+</head>
+<body>
+    <div id="tree"></div>
+
+</body>
+</html>

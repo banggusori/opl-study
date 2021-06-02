@@ -4,11 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel index.html",
+    "build": "parcel build --public-url . /index.html"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "jquery": "^3.6.0",
+    "jquery.fancytree": "^2.38.0",
     "ol": "^6.5.0"
   },
   "devDependencies": {
