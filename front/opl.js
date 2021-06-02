@@ -33,6 +33,8 @@ const randomPoint = ()=>{
       return iconFeature;
 }
 
+
+
 let feature = randomPoint();
 const map = new Map({
   target: 'map',
