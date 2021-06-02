@@ -128,13 +128,12 @@ function fancyTree(){
         var fncy = $(_div).fancytree({
             extensions:_extension,
             source:_dataTree,
-            expanded:true,
             beforeExpand:function(event,data){
                 var expand = data.node.isExpanded();
-                
-                var cookie = _cookie.getCookie(_cookieKey);
+                var cookie = JSON.parse(_cookie.getCookie(_cookieKey));
                 var code =data.node.data[_options.group.code];
                 if(!expand){
+                    console.log(cookie);
                     cookie.push(code);
                     _cookie.setCookie(_cookieKey,cookie);
                 }else{

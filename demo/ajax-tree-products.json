@@ -1,5 +1,5 @@
 [
-	{"title": "Books","code":1, "up_code":0,"expanded": true, "folder": true},
+	{"title": "Books","code":1, "up_code":0, "folder": true},
 	{"title": "Art of War", "code":5, "up_code":1, "type": "book", "author": "Sun Tzu", "year": -500, "qty": 21, "price": 5.95},
 	{"title": "The Hobbit", "code":6, "up_code":1, "type": "book", "author": "J.R.R. Tolkien", "year": 1937, "qty": 32, "price": 8.97},
 	{"title": "The Little Prince", "code":7, "up_code":1, "type": "book", "author": "Antoine de Saint-Exupery", "year": 1943, "qty": 2946, "price": 6.82},

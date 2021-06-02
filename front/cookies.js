@@ -3,9 +3,12 @@
 function _cookies(){
     return {
         setCookie:function(keys,value){
-            let cookies = this.getCookiesAll();
-            cookies[keys] = value;
-            document.cookie = JSON.stringify(cookies);
+
+            var date = new Date();
+            date.setTime(date.getTime()+(365*24*60*60*1000));
+            var str = keys+"="+JSON.stringify(value)+"; expires="+date.toGMTString()+";path=/";
+            console.log(str);
+            document.cookie = str;
         },
         getCookiesAll:function(){
             if(document.cookie == ""){
@@ -15,13 +18,13 @@ function _cookies(){
             }
         },
         getCookie:function(keys){
-            let cookies = this.getCookiesAll();
-            cookies = cookies[keys];
-            return cookies == "" ? []:cookies;
+            let cookies = document.cookie.match('(^|;) ?' + keys + '=([^;]*)(;|$)');
+            cookies = cookies== null && cookies == undefined ? [] : cookies[2];
+            return cookies;
             //cookies(keys);
         },
-        resetCookie:function(){
-            document.cookie="";
+        resetCookie:function(keys){
+            document.cookie=keys+'expires=Thu, 01 Jan 1999 00:00:10 GMT;';
         }
     }
 }
