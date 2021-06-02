@@ -106,10 +106,7 @@ function fancyTree(){
     _module.init = function(div,extension,d=[],options={group:{upCode:"up_code",code:"code"}}){
         _div = div;
         _extension = extension;
-
-
         var openList = _cookie.getCookie(_cookieKey);
-        console.log(openList);
         d=d.map((obj)=>{
             for(var i =0; i <openList.length; i ++){
                 if(obj[_options.group.code] == openList[i]){
@@ -118,6 +115,7 @@ function fancyTree(){
             }
             return obj;
         })
+        
 
         _options = Object.assign(_options,options);
         _dataObj = arrayToObj(d,options.group.code);
@@ -132,9 +130,9 @@ function fancyTree(){
             beforeExpand:function(event,data){
                 var expand = data.node.isExpanded();
                 var cookie = _cookie.getCookie(_cookieKey);
-                cookie = cookie.split(',');
+                
+                cookie = cookie.length > 0 ?cookie.split(','): [];
                 var code =data.node.data[_options.group.code];
-                console.log(code);
                 if(!expand){
                     cookie.push(code);
                     _cookie.setCookie(_cookieKey,cookie);

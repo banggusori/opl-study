@@ -24,7 +24,7 @@ function _cookies(){
             //cookies(keys);
         },
         resetCookie:function(keys){
-            document.cookie=keys+'expires=Thu, 01 Jan 1999 00:00:10 GMT;';
+            document.cookie=keys+'; expires=Thu, 01 Jan 1999 00:00:10 GMT; path=/';
         }
     }
 }

@@ -22,6 +22,7 @@
         window.onload= function(){            
             var options = {group:{code:"code",upCode:"up_code"}}
             readTextFile("/demo/ajax-tree-products.json").then((e)=>{
+                console.log(e);
                 ftree.init('#tree',["dnd5","edit","multi"],e,options);
                 ftree.drop((o,node,sourceNodes)=>{
                 });
