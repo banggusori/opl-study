@@ -109,6 +109,7 @@ function fancyTree(){
 
 
         var openList = _cookie.getCookie(_cookieKey);
+        console.log(openList);
         d=d.map((obj)=>{
             for(var i =0; i <openList.length; i ++){
                 if(obj[_options.group.code] == openList[i]){
@@ -133,7 +134,6 @@ function fancyTree(){
                 var cookie = JSON.parse(_cookie.getCookie(_cookieKey));
                 var code =data.node.data[_options.group.code];
                 if(!expand){
-                    console.log(cookie);
                     cookie.push(code);
                     _cookie.setCookie(_cookieKey,cookie);
                 }else{
